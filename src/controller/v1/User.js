@@ -30,7 +30,7 @@ class User extends BaseController {
       if (!valid.goCheck()) throw new ParameterException()
       
       const user = await UserModel.getUserByID(req.params)
-      if(!user) throw new Error('未知错误')
+      if(!user) throw new Error('unknown error')
       
       res.json({
         code: 200,
@@ -51,7 +51,7 @@ class User extends BaseController {
       if (!valid.goCheck()) throw new ParameterException() 
       
       const user = await UserModel.getUserByID(req.params)
-      if(!user) throw new Error('未知错误')
+      if(!user) throw new Error('unknown error')
       
       res.json({
         code: 200,

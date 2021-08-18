@@ -1,3 +1,6 @@
+
+# params
+99999 params error
 # Token
 10004 token not found
 10005 token expired 
@@ -6,5 +9,7 @@
 30000 unknown account exception
 
 # user
-20000 unknown user exception
+40000 unknown user exception
 
+# clock
+50000 unknown user exception

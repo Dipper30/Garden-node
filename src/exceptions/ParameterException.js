@@ -7,7 +7,7 @@ class ParameterException extends BaseException {
     super()
     this.code = 400
     this.msg = 'invalid parameters'
-    this.error_code = 10000
+    this.error_code = 9999
   }
 }
 

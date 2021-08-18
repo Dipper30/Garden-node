@@ -4,6 +4,7 @@ const router = express.Router()
 const RoomController = require('../controller/v1/Room')
 const UserController = require('../controller/v1/User')
 const AccountController = require('../controller/Account')
+const ClockController = require('../controller/v1/Clock')
 const SettingController = require('../controller/v1/Setting')
 const StudyDurationService = require('../service/StudyDuration')
 
@@ -11,15 +12,19 @@ const StudyDurationService = require('../service/StudyDuration')
 
 // const user = new UserController()
 
-// 账号
+// account
 router.post('/checkAccount', AccountController.checkAccount)
 router.post('/register', AccountController.register)
 router.post('/login', AccountController.login)
 
-// 用户类型
+// user
 router.get('/user/:id', UserController.getUserByID)
 router.post('/updateUser', UserController.updateUser)
 // router.post('/user', UserController.createUser)
+
+// clock
+router.get('/clock', AccountController.checkAccount)
+router.post('/clock', ClockController.createClock)
 
 // 房间类型
 router.get('/rooms', RoomController.getAllRooms)

@@ -24,10 +24,10 @@ class Account extends BaseController {
 
   async checkAccount (req, res, next) {
     try {
-      if (!req.body.account) throw new AccountException('参数错误！')
+      if (!req.body.account) throw new AccountException('params error')
 
       const hasAccount = await AccountModel.findAccount(req.body)
-      if ( hasAccount ) throw new AccountException('用户已存在')
+      if ( hasAccount ) throw new AccountException('user exsists')
 
       res.json({
         code: 200,
@@ -42,7 +42,7 @@ class Account extends BaseController {
   async register (req, res, next) {
     try {
       const valid = new AccountValidator(req.body)
-      if (!valid.goCheck()) throw new AccountException()
+      if (!valid.goCheck()) throw new AccountException('params error')
 
       const hasAccount = await AccountModel.findAccount(req.body)
       if ( hasAccount ) throw new AccountException('user exsists')
@@ -51,7 +51,7 @@ class Account extends BaseController {
       // if (!isUser.goCheck()) throw new AccountException('params error')
 
       const user = await UserModel.createUser(req.body)
-      if (!user) throw new AccountException()
+      if (!user) throw new AccountException('db error')
 
       res.json({
         code: 201,

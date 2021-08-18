@@ -5,11 +5,11 @@ class Account {
   } 
 
   async findAccount (params) {
-    const { account } = params
+    const { username } = params
     try {
       const hasAccount = await model.User.findOne({
         where: {
-          account
+          username
         }
       })
       return hasAccount
@@ -19,11 +19,11 @@ class Account {
   }
 
   async loginAccount (params) {
-    const { account, password } = params
+    const { username, password } = params
     try {
       const user = await model.User.findOne({
         where: {
-          account
+          username
         }
       })
       if ( user && user.password == password ) return user

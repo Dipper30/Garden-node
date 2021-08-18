@@ -5,7 +5,7 @@ class AccountException extends BaseException {
   constructor (msg) {
     super()
     this.code = 500
-    this.error_code = 3000
+    this.error_code = 30000
     if (msg) this.msg = msg
   }
 }

@@ -48,6 +48,11 @@ class BaseValidator {
   isPositiveInteger () {
     return true
   }
+
+  // unix timestamp must be 10 digits
+  isUnixTimeStamp (ts) {
+    return !!ts && typeof ts == 'number' && ts.toString().length === 10
+  }
 }
 
 module.exports = BaseValidator

@@ -20,19 +20,23 @@ class User {
   }
 
   async createUser (params) {
-    const { account, password, name, gender } = params
-    console.log('params',params);
-    const daily_duration = JSON.stringify({})
+    const { username, password, name , avartar, gender, grade, school, character } = params
+    console.log('paeams,',params,model.User.create);
     try {
       const user = await model.User.create({
-        account,
+        username,
         password,
         name,
         gender,
-        daily_duration
+        grade, 
+        avartar,
+        school, 
+        character
       })
+      console.log('?',user);
       return user
     } catch (error) {
+      console.log(error)
       return false
     }  
   }

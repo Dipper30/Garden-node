@@ -1,6 +1,6 @@
 class BaseException {
   code = 400
-  msg = 'invalid parameters'
+  msg = 'unknown server failures'
   error_code = 999
 
   constructor () {

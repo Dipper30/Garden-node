@@ -4,7 +4,7 @@ const validator = require('validator')
 class AccountValidator extends BaseValidator {
 
   // 这里定义了所有参数的校验标准
-  rules = ['username|string|required', 'password|string|required']
+  rules = ['user_id|number|required', 'set_time|number|required', 'title|string|required', 'desc|string']
 
   constructor (params) {
     super()
@@ -14,8 +14,8 @@ class AccountValidator extends BaseValidator {
   goCheck () {
     const valid = this.checkParams(this.params, this.rules)
     if ( !valid ) return false
-    const { password } = this.params
-    if ( password.length < 6 ) return false
+    const { set_time } = this.params
+    if ( !this.isUnixTimeStamp(set_time) ) return false
     return true
   }
 }

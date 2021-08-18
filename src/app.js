@@ -22,10 +22,12 @@ app.all('*', async (req, res, next) => {
 	}
 })
 
+const tokenFreeUrls = ['api/v1/login', 'api/v1/register', '/api/v1/checkAccount', '/api/v1/clock']
+
 // token 校验
 app.use('/', async (req, res, next) => {
-  if ( req.url == '/api/v1/login' || req.url == '/api/v1/register' 
-  || req.url == '/api/v1/checkAccount' || req.url == '/api/v1/calculateStudyDuration' ) {
+  console.log(req.url);
+  if ( tokenFreeUrls.includes(req.url) ) {
     next()
     return
   }
