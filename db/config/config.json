@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "garden",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "aws": {
+    "username": "admin",
+    "password": "aws-demo-123456",
+    "database": "aws-e-study-db",
+    "host": "aws-demo-database.cuhlitui3bjy.ap-southeast-1.rds.amazonaws.comnp",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "ali@DB123456",
+    "database": "estudydb",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
