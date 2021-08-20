@@ -5,6 +5,19 @@ class Clock {
 
   } 
 
+  async getClocksByUID (params) {
+    try {
+      const clocks = await model.Clock.findAll({
+        where: {
+          user_id: params
+        }
+      })
+      return clocks
+    } catch (error) {
+      return error
+    }
+  }
+
   async createClock (params) {
     try {
       const clock = await model.Clock.create({

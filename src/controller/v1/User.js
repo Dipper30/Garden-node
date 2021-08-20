@@ -13,6 +13,7 @@ const AccountModel = require('../../model/Account')
 const TokenService = require('../../service/Token')
 const TokenException = require('../../exceptions/TokenException')
 
+const base = new BaseController()
 // const userModel = new UserModel()
 // const pi = new IDMustBePositiveInteger()
 
@@ -81,4 +82,4 @@ class User extends BaseController {
   }
 }
 
-module.exports = new User()
+module.exports = User

@@ -4,7 +4,7 @@ const validator = require('validator')
 class AccountValidator extends BaseValidator {
 
   // 这里定义了所有参数的校验标准
-  rules = ['username|string|required', 'password|string|required']
+  rules = ['username|string|required', 'password|string|required', 'name|string|allowNull', 'grade|number|allowNull', 'school|number|allowNull']
 
   constructor (params) {
     super()

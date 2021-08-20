@@ -145,4 +145,4 @@ class Room extends BaseController {
 
 }
 
-module.exports = new Room()
+module.exports = Room

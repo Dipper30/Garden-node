@@ -32,4 +32,4 @@ class Setting extends BaseController {
 
 }
 
-module.exports = new Setting()
+module.exports = Setting

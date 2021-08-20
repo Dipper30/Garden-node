@@ -1,4 +1,6 @@
 const model = require('../../db/models')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 class Account {
   constructor () {
 
@@ -6,12 +8,15 @@ class Account {
 
   async findAccount (params) {
     const { username } = params
+    // username = username.toLowerCase()
     try {
+      //TODO ignore case
       const hasAccount = await model.User.findOne({
         where: {
           username
         }
       })
+      console.log('find', hasAccount);
       return hasAccount
     } catch (error) {
       return error

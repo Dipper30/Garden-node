@@ -29,7 +29,9 @@ grade: {
   4: senior,
   10: graduate,
   11: graduate,
+  12: graduate,
   20: doctor,
   21: doctor,
-  30: 
+  30: professor,
+  90: invincible
 }

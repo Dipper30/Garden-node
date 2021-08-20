@@ -12,7 +12,7 @@ const AccountModel = require('../model/Account')
 // TokenService
 const TokenService = require('../service/Token')
 
-
+const { omit } = require('../lib/OmitFields')
 
 // const userModel = new UserModel()
 // const pi = new IDMustBePositiveInteger()
@@ -24,7 +24,7 @@ class Account extends BaseController {
 
   async checkAccount (req, res, next) {
     try {
-      if (!req.body.account) throw new AccountException('params error')
+      if (!req.body.username) throw new AccountException('params error')
 
       const hasAccount = await AccountModel.findAccount(req.body)
       if ( hasAccount ) throw new AccountException('user exsists')
@@ -65,19 +65,19 @@ class Account extends BaseController {
   async login (req, res, next) {
     try {
       const valid = new AccountValidator(req.body)
-      if (!valid.goCheck()) throw new AccountException()
+      if (!valid.goCheck()) throw new AccountException('incorrect username or password')
 
       const account = await AccountModel.loginAccount(req.body)
-      if ( !account ) throw new AccountException('用户名或密码错误')
+      if ( !account ) throw new AccountException('incorrect username or password')
 
-      // 登录成功，返回token值
+      // logged in, return a token
       let Token = new TokenService(account.dataValues.id)
       let token = Token.generateToken()
       
       res.json({
         code: 200,
         msg: 'Logged in!',
-        data: account,
+        data: omit(account),
         token
       })
     } catch (error) {
@@ -86,4 +86,4 @@ class Account extends BaseController {
   }
 }
 
-module.exports = new Account()
+module.exports = Account

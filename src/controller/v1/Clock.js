@@ -4,10 +4,28 @@ const ParameterException = require('../../exceptions/ParameterException')
 // const TokenException = require('../../exceptions/TokenException')
 const ClockValidator = require('../../validator/ClockValidator')
 const ClockModel = require('../../model/Clock')
-
+const { omit } = require('../../lib/OmitFields')
 class Clock extends BaseController {
   constructor () {
     super()
+  }
+
+  async getClocksByUID (req, res, next) {
+    try {
+      const { user_id } = req.query
+      if (!user_id) throw new ParameterException()
+      
+      const clocks = await ClockModel.getClocksByUID(user_id)
+      if(!clocks) throw new Error('unknown error')
+
+      res.json({
+        code: 200,
+        msg: 'success',
+        data: omit(clocks)
+      })
+    } catch (error) {
+      next(error)
+    }
   }
 
   async createClock (req, res, next) {
@@ -29,4 +47,4 @@ class Clock extends BaseController {
 
 }
 
-module.exports = new Clock()
+module.exports = Clock
