@@ -1,6 +1,4 @@
 const validator = require('validator')
-
-
 class BaseValidator {
 
   constructor (params) {

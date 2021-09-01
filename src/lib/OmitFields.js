@@ -6,7 +6,6 @@ const attrs = [
 // omit some useless or sensitive attributes
 
 const omit = (rawData, attrsToOmit = attrs) => {
-  console.log('omit..');
   if (!rawData) return rawData
   rawData = JSON.parse(JSON.stringify(rawData))
   // check data type
@@ -17,8 +16,7 @@ const omit = (rawData, attrsToOmit = attrs) => {
       })
       return data
     })
-  }
-  else {
+  } else {
     Object.keys(rawData).forEach(attr => {
       if (attrsToOmit.includes(attr)) delete rawData[attr]
     })

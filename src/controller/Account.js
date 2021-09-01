@@ -77,7 +77,11 @@ class Account extends BaseController {
       res.json({
         code: 200,
         msg: 'Logged in!',
-        data: omit(account),
+        data: omit(account, [
+          'createdAt', 
+          'updatedAt',
+          'password'
+        ]),
         token
       })
     } catch (error) {
