@@ -64,3 +64,4 @@ schedule.scheduleJob('0 0 0 * * *', () => {
   calculateStudyDuration()
 })
 
+console.log('hello world')
