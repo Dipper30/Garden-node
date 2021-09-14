@@ -6,9 +6,10 @@ class AccountValidator extends BaseValidator {
   // 这里定义了所有参数的校验标准
   rules = ['user_id|number|required', 'set_time|number|required', 'title|string|required', 'desc|string']
 
-  constructor (params) {
+  constructor (params, rules) {
     super()
     this.params = params
+    if (rules) this.rules = rules
   }
 
   goCheck () {

@@ -30,6 +30,8 @@ router.post('/updateUser', UserController.updateUser)
 // clock
 router.get('/clock', ClockController.getClocksByUID)
 router.post('/clock', ClockController.createClock)
+router.post('/deleteClock', ClockController.deleteClock)
+
 
 // 设置操作
 router.post('/report', SettingController.report)

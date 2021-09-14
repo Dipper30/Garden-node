@@ -15,13 +15,15 @@ class Clock extends BaseController {
       const { user_id } = req.query
       if (!user_id) throw new ParameterException()
       
-      const clocks = await ClockModel.getClocksByUID(user_id)
+      const clocks = await ClockModel.getClocksByUID(req.query)
       if(!clocks) throw new Error('unknown error')
 
+      clocks.future = omit(clocks.future)
+      clocks.past = omit(clocks.past)
       res.json({
         code: 200,
         msg: 'success',
-        data: omit(clocks)
+        data: clocks
       })
     } catch (error) {
       next(error)
@@ -33,12 +35,29 @@ class Clock extends BaseController {
       let valid = new ClockValidator(req.body)
       if (!valid.goCheck()) throw new ParameterException()
       
-      const report = await ClockModel.createClock(req.body)
-      if(!report) throw new Error('unknown error')
+      const clock = await ClockModel.createClock(req.body)
+      if(!clock) throw new Error('unknown error')
 
       res.json({
         code: 201,
         msg: 'success'
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async deleteClock (req, res, next) {
+    try {
+      const { clock_id } = req.body
+      if (!clock_id || typeof clock_id != 'number') throw new ParameterException()
+      
+      const deleted = await ClockModel.deleteClocksByUID(req.body)
+      if(!deleted) throw new Error('unknown error')
+
+      res.json({
+        code: 201,
+        msg: 'deleted'
       })
     } catch (error) {
       next(error)

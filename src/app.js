@@ -22,7 +22,7 @@ app.all('*', async (req, res, next) => {
 	}
 })
 
-const tokenFreeUrls = ['/api/v1/login', '/api/v1/register', '/api/v1/checkAccount', '/api/v1/clock']
+const tokenFreeUrls = ['/api/v1/login', '/api/v1/register', '/api/v1/checkAccount']
 
 // token 校验
 app.use('/', async (req, res, next) => {
